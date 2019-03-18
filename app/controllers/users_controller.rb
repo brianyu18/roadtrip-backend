@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       secret = 'noodle'
       userTokenData = {user_id: @user.id}
       userToken = encode_token(userTokenData)
-      render json: { token: userToken }, status: :created
+      render json: { token: userToken, user_id: @user.id, username: @user.username }, status: :created
     else
       render json: { error: 'failed to create user' }, status: :not_acceptable
     end
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
       secret = 'noodle'
       userTokenData = {user_id: @user.id}
       userToken = encode_token(userTokenData)
-      render json: { result: "success", token: userToken }, status: :ok
+      render json: { result: "success", token: userToken, user_id: @user.id, username: @user.username }, status: :ok
     else
       render json: { result: "failed", message: 'failed to login' }, status: :unauthorized
     end
