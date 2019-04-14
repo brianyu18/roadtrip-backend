@@ -9,5 +9,10 @@ Rails.application.routes.draw do
   post '/groups', :to => 'trip#groups'
   get '/messages/:trip_id', :to => 'messages#index'
 
+  get '/find', :to => 'search#find'
+  get '/findcord', :to => 'search#findCord'
+  get '/findevent', :to => 'search#findEvent'
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
