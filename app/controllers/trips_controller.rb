@@ -33,6 +33,7 @@ class TripsController < ApplicationController
 
   # DELETE /trips/1
   def destroy
+    set_trip
     @trip.destroy
   end
 
