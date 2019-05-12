@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/login', :to => 'users#login'
   post '/groups', :to => 'trip#groups'
   get '/messages/:trip_id', :to => 'messages#index'
+  get '/friends/:trip_id', :to => 'trips#friend'
 
   get '/find', :to => 'search#find'
   get '/findcord', :to => 'search#findCord'

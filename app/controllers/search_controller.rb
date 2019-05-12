@@ -9,7 +9,8 @@ class SearchController < ApplicationController
     search = params[:search]
     puts ENV['get_data']
     puts params
-    response = HTTParty.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=#{ENV['get_data']}&sensor=false&location=#{location}&radius=47022&keyword=#{search}")
+    # response = HTTParty.get("https://maps.googleapis.com/maps/api/place/textsearch/xml?query=#{search}+in+#{location}&key=#{ENV['get_data']}")
+    response = HTTParty.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=#{ENV['get_data']}&sensor=false&location=#{location}&radius=47022&name=#{search}")
     puts response.body
     render json: response.body
   end

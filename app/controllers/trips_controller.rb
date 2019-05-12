@@ -39,12 +39,25 @@ class TripsController < ApplicationController
 
   #GET /trips and /users
   def group
-    @trips = Trip.find(current_user).trip_users
-
+    @trips = Trip.find(current_trip).trip_users
     render json: {result:'success', data: @trips}
   end
 
+
+  def friend
+    trip = current_trip
+    # byebug
+    friends = trip.users
+    render json: {result:'success', data: friends}
+  end
+
   private
+
+    def current_trip
+      @destination = Trip.find(params[:trip_id])
+      return @destination
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_trip
       @trip = Trip.find(params[:id])
